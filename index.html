@@ -31,9 +31,9 @@ canvas{border:3px solid #667eea;border-radius:15px;background:white;touch-action
 <div class="box">
 <h3>🧠 Quiz Game</h3>
 <p id="q">Q1. India ki Capital kya hai?</p>
-<button onclick="checkAns('Delhi')">Delhi</button>
-<button onclick="checkAns('Mumbai')">Mumbai</button>
-<button onclick="checkAns('Patna')">Patna</button>
+<button id="opt1" onclick="checkAns(this.innerText)">Delhi</button>
+<button id="opt2" onclick="checkAns(this.innerText)">Mumbai</button>
+<button id="opt3" onclick="checkAns(this.innerText)">Patna</button>
 <h3 id="score">Score: 0</h3>
 <p id="qres"></p>
 <button onclick="nextQ()">Next Question ➡️</button>
@@ -78,6 +78,14 @@ let qi=0, sc=0;
 function showQ(){
 document.getElementById('q').innerText="Q"+(qi+1)+". "+questions[qi].q;
 let btns=document.querySelectorAll('.box')[1].querySelectorAll('button');
+}
+  function nextQ(){
+qi=(qi+1)%questions.length;
+document.getElementById('q').innerText="Q"+(qi+1)+". "+questions[qi].q;
+document.getElementById('opt1').innerText=questions[qi].opts[0];
+document.getElementById('opt2').innerText=questions[qi].opts[1];
+document.getElementById('opt3').innerText=questions[qi].opts[2];
+document.getElementById('qres').innerText="";
 }
 function checkAns(a){
 if(a==questions[qi].ans){sc++;document.getElementById('qres').innerText="Sahi Jawab! 🎉";}else{document.getElementById('qres').innerText="Galat! Sahi hai: "+questions[qi].ans;}
