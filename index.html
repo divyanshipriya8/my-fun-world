@@ -2,104 +2,79 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Fun World - By Divyanshi</title>
+<title>Divyanshi Priya | Frontend Developer</title>
 <style>
-body{font-family:Arial;background:linear-gradient(135deg,#667eea,#764ba2,#ff6b9d);min-height:100vh;text-align:center;padding:15px;color:white;margin:0}
-h1{font-size:28px;text-shadow:2px 2px 5px black}
-.box{background:white;color:#333;padding:18px;border-radius:20px;margin:15px auto;max-width:420px;box-shadow:0 5px 20px rgba(0,0,0,0.3)}
-button{background:#667eea;color:white;border:none;padding:11px 16px;border-radius:12px;margin:4px;font-weight:bold;font-size:15px}
-input{padding:10px;margin:5px;border-radius:10px;border:1px solid #ccc;width:80%}
-canvas{border:3px solid #667eea;border-radius:15px;background:white;touch-action:none}
-.food{background:#f8f9ff;padding:12px;border-radius:15px;margin:8px 0;display:flex;justify-content:space-between;align-items:center}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#0f172a;color:white}
+nav{display:flex;justify-content:space-between;padding:18px 20px;background:#1e293b;position:sticky;top:0}
+nav b{font-size:20px;color:#38bdf8}
+nav a{color:white;text-decoration:none;margin-left:12px;font-size:14px}
+.hero{padding:50px 20px;text-align:center;background:linear-gradient(135deg,#0ea5e9,#6366f1)}
+.hero img{width:110px;height:110px;border-radius:50%;border:4px solid white;object-fit:cover}
+.hero h1{font-size:32px;margin-top:12px}
+.hero p{margin:10px 0;opacity:0.9}
+.btn{background:white;color:#0f172a;padding:11px 20px;border-radius:25px;display:inline-block;text-decoration:none;font-weight:bold;margin-top:10px}
+.section{padding:30px 20px;max-width:700px;margin:auto}
+.card{background:#1e293b;padding:20px;border-radius:16px;margin:12px 0}
+.card h3{color:#38bdf8}
+.tag{background:#334155;padding:6px 12px;border-radius:20px;display:inline-block;margin:4px;font-size:13px}
+.card a{color:#38bdf8;text-decoration:none;font-weight:bold}
+footer{text-align:center;padding:20px;opacity:0.6;font-size:13px}
 </style>
 </head>
 <body>
-<h1>🌍 My Fun World</h1>
-<p>By Divyanshi Priya ❤️</p>
+<nav><b>Divyanshi.</b><div><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div></nav>
 
-<div class="box">
-<h3>🎨 Drawing App</h3>
-<canvas id="c" width="320" height="200"></canvas><br>
-<button onclick="setColor('red')">🔴 Red</button>
-<button onclick="setColor('blue')">🔵 Blue</button>
-<button onclick="setColor('green')">🟢 Green</button>
-<button onclick="setColor('black')">⚫ Black</button><br>
-<button onclick="clearCanvas()">Clear 🧹</button>
-<p>Ungli se draw karo!</p>
+<div class="hero">
+<h1>Hi, I'm Divyanshi Priya 👋</h1>
+<p>Frontend Developer | HTML • CSS • JavaScript<br>Bihar, India</p>
+<p>I build beautiful, responsive websites that actually work.</p>
+<a class="btn" href="#projects">View My Work ↓</a>
 </div>
 
-<div class="box">
-<h3>🧠 Quiz Game</h3>
-<p id="q">Q1. India ki Capital kya hai?</p>
-<button id="opt1" onclick="checkAns(this.innerText)">Delhi</button>
-<button id="opt2" onclick="checkAns(this.innerText)">Mumbai</button>
-<button id="opt3" onclick="checkAns(this.innerText)">Patna</button>
-<h3 id="score">Score: 0</h3>
-<p id="qres"></p>
-<button onclick="nextQ()">Next Question ➡️</button>
+<div class="section" id="skills">
+<h2>💻 My Skills</h2>
+<div class="card">
+<span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">GitHub Pages</span><span class="tag">Responsive Design</span><span class="tag">UI Design</span>
+<p style="margin-top:12px">I can convert any idea into a live website using HTML, CSS & JS.</p>
+</div>
 </div>
 
-<div class="box">
-<h3>🍕 Food Order - Divyanshi's Cafe</h3>
-<div class="food"><span>🍕 Pizza - Rs. 199</span><button onclick="order('Pizza')">Order</button></div>
-<div class="food"><span>🍔 Burger - Rs. 99</span><button onclick="order('Burger')">Order</button></div>
-<div class="food"><span>🍟 Fries - Rs. 79</span><button onclick="order('Fries')">Order</button></div>
-<div class="food"><span>🥤 Cold Drink - Rs. 49</span><button onclick="order('Cold Drink')">Order</button></div>
-<h3 id="cart">Cart: Kuch nahi</h3>
-<button onclick="placeOrder()" style="background:#ff6b9d">Place Order ✅</button>
-<p id="orderMsg"></p>
+<div class="section" id="projects">
+<h2>🚀 My Projects</h2>
+
+<div class="card">
+<h3>🌍 My Fun World - Interactive Web App</h3>
+<p>Drawing App + Quiz Game + Food Ordering System in one website. Built with Canvas API & JavaScript logic.</p>
+<p><br><b>Tech:</b> HTML, CSS, JavaScript</p>
+<a href="https://divyanshipriya8.github.io/my-fun-world/" target="_blank">🔗 Live Demo →</a>
 </div>
 
-<script>
-let canvas=document.getElementById('c');
-let ctx=canvas.getContext('2d');
-let drawing=false, color='black';
-function setColor(c){color=c;}
-function clearCanvas(){ctx.clearRect(0,0,320,200)}
-function getPos(e){
-let r=canvas.getBoundingClientRect();
-let t=e.touches?e.touches[0]:e;
-return {x:t.clientX-r.left, y:t.clientY-r.top};
-}
-canvas.addEventListener('mousedown',e=>{drawing=true;let p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y)});
-canvas.addEventListener('mousemove',e=>{if(!drawing)return;let p=getPos(e);ctx.strokeStyle=color;ctx.lineWidth=4;ctx.lineTo(p.x,p.y);ctx.stroke()});
-canvas.addEventListener('mouseup',()=>drawing=false);
-canvas.addEventListener('touchstart',e=>{e.preventDefault();drawing=true;let p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y)});
-canvas.addEventListener('touchmove',e=>{e.preventDefault();if(!drawing)return;let p=getPos(e);ctx.strokeStyle=color;ctx.lineWidth=4;ctx.lineTo(p.x,p.y);ctx.stroke()});
-canvas.addEventListener('touchend',()=>drawing=false);
+<div class="card">
+<h3>🎀 My First Website</h3>
+<p>My first deployed website. Learned GitHub, Hosting & Deployment from scratch.</p>
+<p><br><b>Tech:</b> HTML, CSS</p>
+<a href="https://divyanshipriya8.github.io/my-first-website/" target="_blank">🔗 Live Demo →</a>
+</div>
 
-let questions=[
-{q:"India ki Capital kya hai?", ans:"Delhi", opts:["Delhi","Mumbai","Patna"]},
-{q:"2 + 2 = ?", ans:"4", opts:["3","4","5"]},
-{q:"Taj Mahal kahan hai?", ans:"Agra", opts:["Delhi","Agra","Jaipur"]},
-{q:"Bihar ki Capital?", ans:"Patna", opts:["Gaya","Patna","Rohtas"]}
-];
-let qi=0, sc=0;
-function showQ(){
-document.getElementById('q').innerText="Q"+(qi+1)+". "+questions[qi].q;
-let btns=document.querySelectorAll('.box')[1].querySelectorAll('button');
-}
-  function nextQ(){
-qi=(qi+1)%questions.length;
-document.getElementById('q').innerText="Q"+(qi+1)+". "+questions[qi].q;
-document.getElementById('opt1').innerText=questions[qi].opts[0];
-document.getElementById('opt2').innerText=questions[qi].opts[1];
-document.getElementById('opt3').innerText=questions[qi].opts[2];
-document.getElementById('qres').innerText="";
-}
-function checkAns(a){
-if(a==questions[qi].ans){sc++;document.getElementById('qres').innerText="Sahi Jawab! 🎉";}else{document.getElementById('qres').innerText="Galat! Sahi hai: "+questions[qi].ans;}
-document.getElementById('score').innerText="Score: "+sc;
-}
-function nextQ(){qi=(qi+1)%questions.length;document.getElementById('q').innerText="Q"+(qi+1)+". "+questions[qi].q;document.getElementById('qres').innerText="";}
+<div class="card">
+<h3>📝 Coming Soon - To-Do App</h3>
+<p>Next project: Task manager with LocalStorage. Users can add, delete & save tasks.</p>
+<p><br><b>Status:</b> In Progress</p>
+</div>
+</div>
 
-let cart=[];
-function order(item){cart.push(item);document.getElementById('cart').innerText="Cart: "+cart.join(", ");}
-function placeOrder(){
-if(cart.length==0){document.getElementById('orderMsg').innerText="Pehle kuch order karo!";return;}
-document.getElementById('orderMsg').innerText="Order ho gaya! 🎉 "+cart.join(", ")+" 30 min me aayega!";
-cart=[];document.getElementById('cart').innerText="Cart: Kuch nahi";
-}
-</script>
+<div class="section" id="contact">
+<h2>📩 Contact Me</h2>
+<div class="card">
+<p>Want to hire me for Internship / Freelance?</p><br>
+<p>📧 Email: divyanshipriya8@gmail.com</p>
+<p>🐙 GitHub: github.com/divyanshipriya8</p>
+<p>📍 Rohtas, Bihar, India</p><br>
+<a href="https://github.com/divyanshipriya8" target="_blank">Visit My GitHub →</a>
+</div>
+</div>
+
+<footer>Made with ❤️ by Divyanshi Priya • © 2026</footer>
 </body>
 </html>
